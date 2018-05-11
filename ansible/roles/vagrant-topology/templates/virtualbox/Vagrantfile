@@ -1,0 +1,12 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = 2
+
+nodes = %w[ tower01 mgmt01
+            server01 server02 ]
+
+nodes.each do |node|
+  vagrantfile = "./Vagrantfile.#{node}"
+  load File.expand_path(vagrantfile) if File.exists?(vagrantfile)
+end

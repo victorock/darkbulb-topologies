@@ -1,0 +1,9 @@
+#!/usr/bin/env ansible-playbook
+- name: "Topology Configuration"
+  hosts: spine,leaf
+  connection: network_cli
+
+  tasks:
+    - name: "Configure Topology"
+      include_role:
+        name: vagrant-base
