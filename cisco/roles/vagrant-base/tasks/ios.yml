@@ -1,5 +1,0 @@
-- name: "Push Config"
-  ios_config:
-    src: "ios/main.conf.j2"
-    backup: no
-    save_when: always
