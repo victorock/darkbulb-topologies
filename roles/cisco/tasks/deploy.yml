@@ -1,6 +1,0 @@
-- name: "Push Config"
-  nxos_config:
-    src: "nxosv/main.conf.j2"
-    backup: no
-    save: yes
-    save_when: always

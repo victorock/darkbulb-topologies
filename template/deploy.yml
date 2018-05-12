@@ -1,4 +1,0 @@
----
-- import_playbook: vagrant.yml
-- import_playbook: spine.yml
-- import_playbook: leaf.yml

@@ -77,158 +77,40 @@ SRV02:
 ## What's Provided
 
 The topologies are created adopting Virtualbox tunnels to provide the interfaces connectivity.
-The goals is to make it easier to expand to multiple notebooks or allow the "Data Centers Interconnection" (Notebook <-> Notebook).
+These topologies are expandable to multi-node deployment.
 
-* Ansible
 * Cisco
-* Cumulus
 * Juniper
 
-### Ansible
+### Build
+You need to download the images if they are not publicly available (Ex: Cisco IOS/NXOS, Arista EOS).
 
-Ansible Tower and Servers based on Centos7.
-This will spawn the servers connected to Leaf switches and Ansible server connected to Vagrant-MGMT Network
+Juniper does provides vQFX images in Vagrant Box public repository.
 
-*Enter the Ansible Lab Folder*
+*Enter the <Vendor> Lab folder:*
 
 ```
-cd <darkbulb>/topologies/Ansible
+cd <darkbulb-topologies>/<vendor>/<NOS>
 ```
 
 *Build the Lab Environment*
 
+>2 Spines, 4 Leafs and 2 Servers
 ```
 ansible-playbook build.yml
 ```
 
-*Run the Lab Environment*
+*Launch the Desired Topology/Nodes*
+>TODO: Create playbook to launch process.
 
->1 Tower and 0 Server
+>2 Spines, 4 Leafs and 2 Servers
 ```
-ansible-playbook run.yml -e topology=1t0s
-```
->1 Tower and 1 Server
-```
-ansible-playbook run.yml -e topology=1t1s
-```
->1 Tower and 2 Server
-```
-ansible-playbook run.yml -e topology=1t2s
-```
->0 Tower and 0 Server
-```
-ansible-playbook run.yml -e topology=0t0s
+cd files
+vagrant up
 ```
 
-*Deploy Default Configuration of Lab Environment*
-
+>1 Spine
 ```
-ansible-playbook deploy.yml
-```
-
-
-### Cumulus
-
-Network Devices based on Cumulus VX.
-Cumulus does provides VX images in Vagrant Box public repository.
-
-*Enter the Cumulus Lab folder:*
-
-```
-cd <darkbulb>/topologies/cumulus
-```
-
-*Launch the Lab Environment*
-
->0 Spines and 0 Leaf
-```
-ansible-playbook build.yml -e topology=0s0l
-```
->1 Spines and 0 Leaf
-```
-ansible-playbook build.yml -e topology=1s0l
-```
->1 Spines and 1 Leaf
-```
-ansible-playbook build.yml -e topology=1s0l
-```
->2 Spines and 1 Leaf
-```
-ansible-playbook build.yml -e topology=2s1l
-```
->2 Spines and 2 Leaf
-```
-ansible-playbook build.yml -e topology=2s2l
-```
->2 Spines and 3 Leaf
-```
-ansible-playbook build.yml -e topology=2s3l
-```
->2 Spines and 4 Leaf
-```
-ansible-playbook build.yml -e topology=2s4l
-```
-
-### Juniper
-Network Devices based on Juniper vQFX10K.
-Juniper does provides vQFX images in Vagrant Box public repository.
-
-*Enter the Juniper Lab folder:*
-
-```
-cd <darkbulb>/topologies/juniper
-```
-
-*Launch the Lab Environment*
-
->0 Spines and 0 Leaf
-```
-ansible-playbook build.yml -e topology=0s0l
-```
->1 Spine and 0 Leaf
-```
-ansible-playbook build.yml -e topology=1s0l
-```
->1 Spines and 1 Leaf
-```
-ansible-playbook build.yml -e topology=1s0l
-```
->2 Spines and 1 Leaf
-```
-ansible-playbook build.yml -e topology=2s1l
-```
->2 Spines and 2 Leaf
-```
-ansible-playbook build.yml -e topology=2s2l
-```
->2 Spines and 3 Leaf
-```
-ansible-playbook build.yml -e topology=2s3l
-```
->2 Spines and 4 Leafs
-```
-ansible-playbook build.yml -e topology=2s4l
-```
-
-### How to blend and spawn your topology
-
-Just chose devices like spine, leafs from different vendors and chose what you want to spawn.
-
-**Ex:**
-
->2 Spines from Juniper:
-```
-    cd topologies/juniper
-    ansible-playbook build.yml -e device=spine01
-    ansible-playbook build.yml -e device=spine02
-```
->1 Leaf from Cumulus:
-```
-    cd topologies/cumulus
-    ansible-playbook build.yml -e device=leaf01
-```
->1 Server from Ansible (POD1):
-```
-    cd topologies/ansible
-    ansible-playbook build.yml -e device=server01
+cd files
+vagrant up spine01
 ```

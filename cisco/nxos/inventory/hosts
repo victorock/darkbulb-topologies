@@ -1,0 +1,42 @@
+[all:children]
+control
+management
+spine
+leaf
+server
+
+[control]
+tower01   ansible_host=127.0.0.1 ansible_port=20022
+
+[management]
+mgmt01    ansible_host=127.0.0.1 ansible_port=9022
+
+[spine]
+spine01   ansible_host=127.0.0.1 ansible_port=11022
+spine02   ansible_host=127.0.0.1 ansible_port=12022
+
+[leaf]
+leaf01    ansible_host=127.0.0.1 ansible_port=13022
+leaf02    ansible_host=127.0.0.1 ansible_port=14022
+leaf03    ansible_host=127.0.0.1 ansible_port=15022
+leaf04    ansible_host=127.0.0.1 ansible_port=16022
+
+[server]
+server01  ansible_host=127.0.0.1 ansible_port=21022
+server02  ansible_host=127.0.0.1 ansible_port=22022
+
+[all:vars]
+ansible_user=vagrant
+ansible_ssh_private_key_file='~/.vagrant.d/insecure_private_key'
+provider=virtualbox
+
+[server:vars]
+image="centos/7"
+
+[spine:vars]
+ansible_network_os=nxos
+image=cisco/nxosv
+
+[leaf:vars]
+ansible_network_os=junos
+image=cisco/nxosv
