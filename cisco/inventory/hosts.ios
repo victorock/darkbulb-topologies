@@ -22,8 +22,8 @@ leaf03    ansible_host=127.0.0.1 ansible_port=15022 inbound_mgmt_ip=10.42.0.23
 leaf04    ansible_host=127.0.0.1 ansible_port=16022 inbound_mgmt_ip=10.42.0.24
 
 [server]
-server01  ansible_host=127.0.0.1 ansible_port=21022 inbound_mgmt_ip=10.42.0.31
-server02  ansible_host=127.0.0.1 ansible_port=22022 inbound_mgmt_ip=10.42.0.32
+server01  ansible_host=127.0.0.1 ansible_port=21022 inbound_mgmt_ip=10.42.0.31 image="centos/7"
+server02  ansible_host=127.0.0.1 ansible_port=22022 inbound_mgmt_ip=10.42.0.32 image="centos/7"
 
 [all:vars]
 inbound_mgmt_netmask=255.255.255.0
