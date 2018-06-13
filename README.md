@@ -12,11 +12,6 @@ The functional environment will have:
 * Two Linux Servers with two network interfaces each one.
 
 ```
-[CONTROL]
-TOWER:
-  E0: VAGRANT-MGMT
-
-
 [SPINE]
 SPINE01:
   E0: VAGRANT-MGMT
